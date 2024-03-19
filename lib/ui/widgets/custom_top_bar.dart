@@ -56,21 +56,21 @@ class _TopBarState extends State<TopBar> {
                       children: [
                         Text('SignUp'),
                         SizedBox(width: 30),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: ConstColor.brownColor,
-                          ),
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (_) {
-                              return const HomeScreen();
-                            }));
-                          },
-                          child: Text(
-                            "Try It Free",
-                            style: TextStyle(color: ConstColor.white),
-                          ),
-                        ),
+                        // ElevatedButton(
+                        //   style: ElevatedButton.styleFrom(
+                        //     backgroundColor: ConstColor.brownColor,
+                        //   ),
+                        //   onPressed: () {
+                        //     Navigator.push(context,
+                        //         MaterialPageRoute(builder: (_) {
+                        //       return const HomeScreen();
+                        //     }));
+                        //   },
+                        //   child: Text(
+                        //     "Try It Free",
+                        //     style: TextStyle(color: ConstColor.white),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ],
