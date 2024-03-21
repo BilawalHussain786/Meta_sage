@@ -1,3 +1,6 @@
+import 'dart:html';
+
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -8,6 +11,8 @@ import 'package:meta_sage_web/constant/const_images.dart';
 import 'package:meta_sage_web/ui/widgets/app_lists.dart';
 import 'package:meta_sage_web/ui/widgets/comminity_List.dart';
 import 'package:meta_sage_web/ui/widgets/reuseable_container.dart';
+import 'package:meta_sage_web/ui/widgets/video_player.dart';
+import 'package:video_player/video_player.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,6 +22,52 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late VideoPlayerController _videoPlayerController;
+  //final videoPlayerController = TextEditingController();
+  late Future<void> _inilizevideoPlayerFuture;
+  bool isPlaying = true;
+
+  double _currentSliderValue = 0.0;
+
+  @override
+  void initState() {
+    _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(
+        "https://download.odoocdn.com/videos/odoo_com/video_homepage.webm"));
+    _inilizevideoPlayerFuture = _videoPlayerController.initialize().then((_) {
+      // _videoPlayerController.play();
+      //_videoPlayerController.setVolume(5);
+      _videoPlayerController.setLooping(true);
+      _videoPlayerController.addListener(() {
+        setState(() {
+          if (isPlaying) {
+            _videoPlayerController.play();
+          }
+          _currentSliderValue =
+              _videoPlayerController.value.position.inSeconds.toDouble();
+        });
+      });
+    });
+
+    super.initState();
+  }
+
+  void _togglePlaying() {
+    setState(() {
+      if (isPlaying) {
+        _videoPlayerController.pause();
+      } else {
+        _videoPlayerController.play();
+      }
+      isPlaying = !isPlaying;
+    });
+  }
+
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     dynamic size = MediaQuery.of(context).size;
@@ -403,7 +454,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(fontSize: 15)),
                   SizedBox(height: 70),
                   Container(
-                    height: 500,
+                    // height: 500,
                     width: MediaQuery.of(context).size.width * 1,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
@@ -417,10 +468,65 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           "Level up your quality of work",
                           style: TextStyle(
-                              fontSize: 40, fontWeight: FontWeight.bold),
+                              fontSize: 80,
+                              fontFamily: "Caveat",
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold),
                         ),
+                        SizedBox(height: 70),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.8,
+                          decoration: BoxDecoration(
+                              color: ConstColor.white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Videobuilder(),
+                            // child: VideoPlayerWiget(
+                            //   videoUrl: (Uri.parse(
+                            //       "https://download.odoocdn.com/videos/odoo_com/video_homepage.webm")),
+                            // ),
+                          ),
+                        )
                       ],
                     ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          onPressed: _togglePlaying,
+
+                          // onPressed: () {
+                          //   setState(() {
+                          //     if (_videoPlayerController.value.isPlaying) {
+                          //       _videoPlayerController.pause();
+                          //     } else {
+                          //       _videoPlayerController.play();
+                          //     }
+                          //     isPlaying = !isPlaying;
+                          //   });
+                          // },
+                          icon:
+                              Icon(isPlaying ? Icons.pause : Icons.play_arrow)),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: Slider(
+                          value: _currentSliderValue,
+                          min: 0.0,
+                          max: _videoPlayerController.value.duration.inSeconds
+                              .toDouble(),
+                          onChanged: (value) {
+                            setState(() {
+                              _currentSliderValue = value;
+                            });
+                            _videoPlayerController
+                                .seekTo(Duration(seconds: value.toInt()));
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 100),
                 ],
@@ -1195,5 +1301,21 @@ class _HomeScreenState extends State<HomeScreen> {
         )
       ]),
     );
+  }
+
+  Widget Videobuilder() {
+    return FutureBuilder(
+        future: _inilizevideoPlayerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return AspectRatio(
+                aspectRatio: _videoPlayerController.value.aspectRatio,
+                child: VideoPlayer(_videoPlayerController));
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        });
   }
 }

@@ -1,13 +1,11 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta_sage_web/ui/widgets/custom_top_bar.dart';
 //import 'package:firebase_core/firebase_core.dart';
 
-Future<void> main() async {
-  // Flutterwid
-  // await Firebase.initializeApp(
-  //   options: DefaultFre.currentPlatform,
-  // );
+void main() async {
   runApp(MetaSageApp());
 }
 
