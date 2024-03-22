@@ -14,6 +14,7 @@ class _CommunityListState extends State<CommunityList> {
   Widget build(BuildContext context) {
     dynamic size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: ConstColor.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),

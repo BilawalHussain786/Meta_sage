@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta_sage_web/constant/const_color.dart';
+import 'package:meta_sage_web/constant/const_images.dart';
 import 'package:meta_sage_web/ui/screen/app_screen.dart';
 import 'package:meta_sage_web/ui/screen/community_screen.dart';
 import 'package:meta_sage_web/ui/screen/home_screen.dart';
@@ -26,55 +27,60 @@ class _TopBarState extends State<TopBar> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 150,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Image.asset(
-                          'assets/images/MetaSage.png',
-                          height: 140,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        _buildTab('App', Icons.arrow_downward_sharp),
-                        SizedBox(width: 30),
-                        _buildTab('Community', Icons.arrow_downward_sharp),
-                        SizedBox(width: 30),
-                        Text('Pricing'),
-                        SizedBox(width: 30),
-                        Text('Contact'),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text('SignUp'),
-                        SizedBox(width: 30),
-                        // ElevatedButton(
-                        //   style: ElevatedButton.styleFrom(
-                        //     backgroundColor: ConstColor.brownColor,
-                        //   ),
-                        //   onPressed: () {
-                        //     Navigator.push(context,
-                        //         MaterialPageRoute(builder: (_) {
-                        //       return const HomeScreen();
-                        //     }));
-                        //   },
-                        //   child: Text(
-                        //     "Try It Free",
-                        //     style: TextStyle(color: ConstColor.white),
-                        //   ),
-                        // ),
-                      ],
-                    ),
-                  ],
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 90),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(
+                        ConstImages.metaSage,
+                        height: 100,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      _buildTab('App', Icons.arrow_downward_sharp),
+                      SizedBox(width: 30),
+                      _buildTab('Community', Icons.arrow_downward_sharp),
+                      SizedBox(width: 30),
+                      Text(
+                        'Pricing',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(width: 30),
+                      Text('Contact',
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text('SignUp',
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold)),
+                      SizedBox(width: 30),
+                      // ElevatedButton(
+                      //   style: ElevatedButton.styleFrom(
+                      //     backgroundColor: ConstColor.brownColor,
+                      //   ),
+                      //   onPressed: () {
+                      //     Navigator.push(context,
+                      //         MaterialPageRoute(builder: (_) {
+                      //       return const HomeScreen();
+                      //     }));
+                      //   },
+                      //   child: Text(
+                      //     "Try It Free",
+                      //     style: TextStyle(color: ConstColor.white),
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                ],
               ),
             ),
             SizedBox(
@@ -113,7 +119,10 @@ class _TopBarState extends State<TopBar> {
         children: [
           Text(
             tabName,
-            style: TextStyle(color: isSelected ? ConstColor.brownColor : null),
+            style: TextStyle(
+                color: isSelected ? ConstColor.brownColor : null,
+                fontSize: 14,
+                fontWeight: FontWeight.bold),
           ),
           SizedBox(width: 5), // Add spacing between icon and text
           Icon(isSelected ? Icons.close : iconData,
@@ -121,24 +130,6 @@ class _TopBarState extends State<TopBar> {
               color: isSelected
                   ? ConstColor.brownColor
                   : null), // Change icon based on selection
-        ],
-      ),
-    );
-  }
-
-  Widget visibledata() {
-    return Expanded(
-      child: Stack(
-        children: [
-          Visibility(
-            visible: _selectedTab == 'App',
-            child: AppsList(),
-          ),
-          Visibility(
-            visible: _selectedTab == 'Community',
-            child: CommunityList(),
-          ),
-          // Add more Visibility widgets for other tabs
         ],
       ),
     );

@@ -82,382 +82,298 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: const Text(
             "All your business on one platform",
-            style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 100,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Caveat'),
           ),
         ),
         const SizedBox(height: 100),
         Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.elliptical(800, 300),
-                topRight: Radius.elliptical(800, 300)),
+                topLeft: Radius.elliptical(500, 150),
+                topRight: Radius.elliptical(500, 150)),
             color: ConstColor.lightgray,
           ),
           //height: MediaQuery.of(context).size.height * 1,
-          width: MediaQuery.of(context).size.width * 1,
+          width: size.width * 1,
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 120, left: 120, top: 150),
+                padding: const EdgeInsets.only(right: 200, left: 200, top: 150),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
-                      //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ReuseableContainer(
-                          url: "assets/images/accounting.png",
+                          url: ConstImages.accounting,
                         ),
                         const SizedBox(height: 10),
                         const Text(
                           "Accounting",
                           style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
-                      ],
-                    ),
-                    Column(
-                      children: [
+                        const SizedBox(height: 20),
                         ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Knowledge",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Sign",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "CRM",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Studio",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Subscriptions",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(right: 120, left: 120),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
+                          url: ConstImages.rental,
                         ),
                         const SizedBox(height: 10),
                         const Text(
                           "Rental",
                           style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
-                      ],
-                    ),
-                    Column(
-                      children: [
+                        const SizedBox(height: 20),
                         ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Point of Sale",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Discuss",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Documents",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Project",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "TimeSheets",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 120,
-                  left: 120,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
+                          url: ConstImages.fieldservice,
                         ),
                         SizedBox(height: 10),
                         const Text(
                           "Field Service",
                           style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
+                        const SizedBox(height: 20),
                         ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Planning",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Helpdesk",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Website",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Socila Marketing",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Email Marketing",
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 120,
-                  left: 120,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        ReuseableContainer(
-                          url: "assets/images/accounting.png",
+                          url: ConstImages.purchase,
                         ),
                         SizedBox(height: 10),
                         Text(
                           "Purchase",
                           style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ReuseableContainer(
-                          url: "assets/images/accounting.png",
+                          url: ConstImages.salepoint,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Point of Sale",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.salepoint,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Point of Sale",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.planing,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "Planning",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.inventoryIcon,
                         ),
                         SizedBox(height: 10),
                         Text(
                           "Inventory",
                           style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ReuseableContainer(
-                          url: "assets/images/accounting.png",
+                          url: ConstImages.sign,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Sign",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.discuss,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Discuss",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.helpdesk,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "Helpdesk",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.manufacturing,
                         ),
                         SizedBox(height: 10),
                         Text(
                           "Manufacturing",
                           style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ReuseableContainer(
-                          url: "assets/images/accounting.png",
+                          url: ConstImages.crm,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "CRM",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.documents,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Documents",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.website,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "Website",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.sales,
                         ),
                         SizedBox(height: 10),
                         Text(
                           "Sales",
                           style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ReuseableContainer(
-                          url: "assets/images/accounting.png",
+                          url: ConstImages.studio,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Studio",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.projects,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Project",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.socialmarketing,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "Socila Marketing",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.hr,
                         ),
                         SizedBox(height: 10),
                         Text(
                           "HR",
                           style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ReuseableContainer(
-                          url: "assets/images/accounting.png",
+                          url: ConstImages.subscription,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Subscriptions",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.timesheet,
+                        ),
+                        SizedBox(height: 10),
+                        const Text(
+                          "TimeSheets",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.emailmarketing,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "Email Marketing",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.dashboard,
                         ),
                         SizedBox(height: 10),
                         Text(
                           "Dashoard",
                           style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
-              //SizedBox(height: 40),
+
+              SizedBox(height: 40),
               Padding(
                 padding: const EdgeInsets.only(right: 150, left: 150, top: 60),
                 child: Text(
@@ -542,7 +458,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   IconButton(
                       onPressed: _togglePlaying,
-
                       // onPressed: () {
                       //   setState(() {
                       //     if (_videoPlayerController.value.isPlaying) {
@@ -596,7 +511,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Shop_Floor.webp",
+                        ConstImages.shopFloor,
                         height: 180,
                         width: 180,
                       ),
@@ -617,7 +532,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Expenses.webp",
+                        ConstImages.expenses,
                         height: 180,
                         width: 180,
                       ),
@@ -638,7 +553,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Point_of_Sale.webp",
+                        ConstImages.pointofSale,
                         height: 180,
                         width: 180,
                       ),
@@ -659,7 +574,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/IoT.webp",
+                        ConstImages.ioT,
                         height: 180,
                         width: 180,
                       ),
@@ -692,7 +607,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: FittedBox(
                         fit: BoxFit.contain, // You can adjust the fit here
                         child: Image.asset(
-                          "assets/images/Frontdesk.webp",
+                          ConstImages.frontdesk,
                           height: 180,
                           width: 180,
                         ),
@@ -714,7 +629,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Inventory.webp",
+                        ConstImages.inventory,
                         height: 180,
                         width: 180,
                       ),
@@ -735,7 +650,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Kiosk.webp",
+                        ConstImages.kiosk,
                         height: 180,
                         width: 180,
                       ),
@@ -751,7 +666,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         const SizedBox(height: 50),
         Container(
-          //height: MediaQuery.of(context).size.height * 1,
           width: MediaQuery.of(context).size.width * 1,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -770,16 +684,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   "Enterprise software done right.",
                   style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                 ),
-                // MasonryGridView.builder(
-                //   itemCount: differentCList.length,
-                //   gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                //       crossAxisCount: 2),
-                //   itemBuilder: (context, index) => Container(
-                //     color: ConstColor.white,
-                //     child: Text("${index + 1}"),
-                //     //height: 300,
-                //   ),
-                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -795,7 +699,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Padding(
                             padding: EdgeInsets.all(50.0),
                             child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
@@ -887,7 +790,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Padding(
                             padding: EdgeInsets.all(50.0),
                             child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
@@ -920,7 +822,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Padding(
                             padding: EdgeInsets.all(50.0),
                             child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
@@ -966,7 +867,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Padding(
                             padding: EdgeInsets.all(50.0),
                             child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
@@ -998,7 +898,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Padding(
                             padding: EdgeInsets.all(50.0),
                             child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
@@ -1047,7 +946,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Padding(
                             padding: EdgeInsets.all(50.0),
                             child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
@@ -1096,7 +994,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Padding(
                             padding: EdgeInsets.all(50.0),
                             child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
@@ -1107,7 +1004,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 const SizedBox(height: 20),
                                 Image.asset(
-                                  "assets/images/proposition.PNG",
+                                  ConstImages.proposition,
                                   width:
                                       MediaQuery.of(context).size.width * 0.3,
                                 )
@@ -1130,13 +1027,13 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 20,
         ),
         Container(
-          // height: MediaQuery.of(context).size.width * 0.3,
           color: ConstColor.darkBlue,
           width: MediaQuery.of(context).size.width * 1,
           child: Column(
             children: [
+              SizedBox(height: 10),
               Text(
-                "META SAGE",
+                "METASAGE",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -1150,11 +1047,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Text("Community",
                         style:
                             TextStyle(color: ConstColor.white, fontSize: 22)),
-                    // Container(
-                    //   height: 1,
-                    //   width: size.width * 0.15,
-                    //   color: ConstColor.greenColor,
-                    // ),
                     SizedBox(
                       height: 10,
                     ),
@@ -1182,11 +1074,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Text("Open Source",
                         style:
                             TextStyle(color: ConstColor.white, fontSize: 22)),
-                    // Container(
-                    //   height: 1,
-                    //   width: size.width * 0.15,
-                    //   color: ConstColor.greenColor,
-                    // ),
                     SizedBox(
                       height: 10,
                     ),
@@ -1333,7 +1220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                             color: ConstColor.greyColor, fontSize: 18)),
                     Image.asset(
-                      "assets/images/MetaSage.png",
+                      ConstImages.metaSage,
                       width: 120,
                       //height: 100,
                     ),
