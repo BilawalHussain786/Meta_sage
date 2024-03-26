@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:meta_sage_web/constant/const_color.dart';
+import 'package:meta_sage_web/constant/const_icons.dart';
 import 'package:meta_sage_web/constant/const_images.dart';
 import 'package:meta_sage_web/ui/widgets/comminity_List.dart';
 import 'package:meta_sage_web/ui/widgets/optimize_wiget.dart';
@@ -23,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isPlaying = true;
 
   double _currentSliderValue = 0.0;
-
+  bool _isHovered = false;
   @override
   void initState() {
     _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(
@@ -36,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
       //     // You can choose to show an error message to the user or perform any other actions.
       //   });
       // }
-      //_videoPlayerController.setVolume(5);
+      _videoPlayerController.setVolume(0);
       _videoPlayerController.setLooping(true);
       setState(() {});
       _videoPlayerController.addListener(() {
@@ -80,10 +82,10 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.symmetric(
             horizontal: 100,
           ),
-          child: const Text(
-            "All your business on one platform",
+          child: Text(
+            "Transforming Your Digital Landscape With Metasage. Innovation Meets Expertise",
             style: TextStyle(
-                fontSize: 100,
+                fontSize: 60,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Caveat'),
           ),
@@ -103,81 +105,37 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.only(right: 200, left: 200, top: 150),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ReuseableContainer(
-                          url: ConstImages.accounting,
+                          url: ConstImages.finance,
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                          "Accounting",
+                          "Finance",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 20),
                         ReuseableContainer(
-                          url: ConstImages.rental,
+                          url: ConstImages.pos,
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                          "Rental",
+                          "Point of Sales ",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 20),
                         ReuseableContainer(
-                          url: ConstImages.fieldservice,
-                        ),
-                        SizedBox(height: 10),
-                        const Text(
-                          "Field Service",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 20),
-                        ReuseableContainer(
-                          url: ConstImages.purchase,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Purchase",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ReuseableContainer(
-                          url: ConstImages.salepoint,
+                          url: ConstImages.fieldforce,
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                          "Point of Sale",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 20),
-                        ReuseableContainer(
-                          url: ConstImages.salepoint,
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Point of Sale",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 20),
-                        ReuseableContainer(
-                          url: ConstImages.planing,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Planning",
+                          "Field Force",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
@@ -185,8 +143,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ReuseableContainer(
                           url: ConstImages.inventoryIcon,
                         ),
-                        SizedBox(height: 10),
-                        Text(
+                        const SizedBox(height: 10),
+                        const Text(
                           "Inventory",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
@@ -201,17 +159,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                          "Sign",
+                          "Digital Sign",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 20),
                         ReuseableContainer(
-                          url: ConstImages.discuss,
+                          url: ConstImages.documents,
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                          "Discuss",
+                          "Document",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
@@ -219,9 +177,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ReuseableContainer(
                           url: ConstImages.helpdesk,
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Helpdesk",
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Help Desk",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
@@ -229,8 +187,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ReuseableContainer(
                           url: ConstImages.manufacturing,
                         ),
-                        SizedBox(height: 10),
-                        Text(
+                        const SizedBox(height: 10),
+                        const Text(
                           "Manufacturing",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
@@ -251,50 +209,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(height: 20),
                         ReuseableContainer(
-                          url: ConstImages.documents,
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Documents",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 20),
-                        ReuseableContainer(
-                          url: ConstImages.website,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Website",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 20),
-                        ReuseableContainer(
-                          url: ConstImages.sales,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Sales",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ReuseableContainer(
-                          url: ConstImages.studio,
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Studio",
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 20),
-                        ReuseableContainer(
                           url: ConstImages.projects,
                         ),
                         const SizedBox(height: 10),
@@ -307,19 +221,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         ReuseableContainer(
                           url: ConstImages.socialmarketing,
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Socila Marketing",
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Social Marketing",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 20),
                         ReuseableContainer(
-                          url: ConstImages.hr,
+                          url: ConstImages.sales,
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          "HR",
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Sale",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
@@ -333,17 +247,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                          "Subscriptions",
+                          "Subscription",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 20),
                         ReuseableContainer(
-                          url: ConstImages.timesheet,
+                          url: ConstImages.attandence,
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         const Text(
-                          "TimeSheets",
+                          "Attandence",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
@@ -351,19 +265,63 @@ class _HomeScreenState extends State<HomeScreen> {
                         ReuseableContainer(
                           url: ConstImages.emailmarketing,
                         ),
-                        SizedBox(height: 10),
-                        Text(
+                        const SizedBox(height: 10),
+                        const Text(
                           "Email Marketing",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.humanResource,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Human Resource",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ReuseableContainer(
+                          url: ConstImages.rental,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Rental",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.planing,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Planing",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 20),
+                        ReuseableContainer(
+                          url: ConstImages.purchase,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Purchase",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 20),
                         ReuseableContainer(
                           url: ConstImages.dashboard,
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Dashoard",
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Dashboard",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
@@ -373,24 +331,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              SizedBox(height: 40),
-              Padding(
-                padding: const EdgeInsets.only(right: 150, left: 150, top: 60),
+              const SizedBox(height: 40),
+              const Padding(
+                padding: EdgeInsets.only(right: 150, left: 150, top: 60),
                 child: Text(
                   "Imagine a vast collection of business apps at your disposal.",
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
                 ),
               ),
               //SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(right: 150, left: 150, top: 10),
+              const Padding(
+                padding: EdgeInsets.only(right: 150, left: 150, top: 10),
                 child: Text(
                     "Got something to improve? There is an app for that.",
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
+              const Padding(
+                padding: EdgeInsets.only(
                   right: 150,
                   left: 150,
                 ),
@@ -399,60 +357,63 @@ class _HomeScreenState extends State<HomeScreen> {
                         TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
               ),
               // SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.only(right: 150, left: 150, top: 30),
+              const Padding(
+                padding: EdgeInsets.only(right: 150, left: 150, top: 30),
                 child: Text(
                     "Each app simplifies a process and empowers more people.",
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 150, left: 150),
+              const Padding(
+                padding: EdgeInsets.only(right: 150, left: 150),
                 child: Text(
                     " Imagine the impact when everyone gets the right tool for the job, with perfect integration.",
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
               ),
-              SizedBox(height: 70),
-              Container(
-                // height: 500,
-                width: MediaQuery.of(context).size.width * 1,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(400),
-                      bottomLeft: Radius.circular(500)),
-                  color: ConstColor.white,
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(height: 60),
-                    Text(
-                      "Level up your quality of work",
-                      style: TextStyle(
-                          fontSize: 80,
-                          fontFamily: "Caveat",
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 70),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.8,
-                      decoration: BoxDecoration(
-                          color: ConstColor.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Videobuilder(),
-                        // child: VideoPlayerWiget(
-                        //   videoUrl: (Uri.parse(
-                        //       "https://download.odoocdn.com/videos/odoo_com/video_homepage.webm")),
-                        // ),
+              const SizedBox(height: 70),
+              Padding(
+                padding: const EdgeInsets.only(left: 100),
+                child: Container(
+                  // height: 500,
+                  width: MediaQuery.of(context).size.width * 1,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(400),
+                        bottomLeft: Radius.circular(500)),
+                    color: ConstColor.white,
+                  ),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 60),
+                      const Text(
+                        "Level up your quality of work",
+                        style: TextStyle(
+                            fontSize: 100,
+                            fontFamily: "Caveat",
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold),
                       ),
-                    )
-                  ],
+                      const SizedBox(height: 50),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        decoration: BoxDecoration(
+                            color: ConstColor.white,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Videobuilder(),
+                          // child: VideoPlayerWiget(
+                          //   videoUrl: (Uri.parse(
+                          //       "https://download.odoocdn.com/videos/odoo_com/video_homepage.webm")),
+                          // ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -487,15 +448,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 100),
-              OptimizeProducts(),
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
+              const OptimizeProducts(),
+              const SizedBox(height: 100),
             ],
           ),
         ),
-        Text("All the tech in one platform",
-            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-        SizedBox(height: 40),
+        const SizedBox(height: 50),
+        const Text("All the tech in one platform",
+            style: TextStyle(
+                fontSize: 90,
+                fontWeight: FontWeight.bold,
+                fontFamily: "Caveat")),
+        const SizedBox(height: 40),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 80),
           child: Row(
@@ -614,7 +579,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  Text("Frontdesk",
+                  const Text("Frontdesk",
                       style:
                           TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
                 ],
@@ -635,7 +600,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  Text("Inventory",
+                  const Text("Inventory",
                       style:
                           TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
                 ],
@@ -674,15 +639,18 @@ class _HomeScreenState extends State<HomeScreen> {
             color: ConstColor.lightgray,
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 100.0),
+            padding: const EdgeInsets.symmetric(horizontal: 100.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 50),
                 const Text(
-                  "Enterprise software done right.",
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                  "Enterprise software \ndone right.",
+                  style: TextStyle(
+                      fontSize: 100,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Caveat"),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -697,7 +665,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: ConstColor.white,
                               borderRadius: BorderRadius.circular(8)),
                           child: Padding(
-                            padding: EdgeInsets.all(50.0),
+                            padding: const EdgeInsets.all(50.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -764,17 +732,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   height: 50,
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child: Text(
+                                    style: ElevatedButton.styleFrom(
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.zero),
+                                        backgroundColor:
+                                            ConstColor.brownAccent),
+                                    child: const Text(
                                       "Compare Editions",
                                       style: TextStyle(
                                           color: ConstColor.white,
                                           fontSize: 20),
                                     ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero),
-                                        backgroundColor:
-                                            ConstColor.brownAccent),
                                   ),
                                 )
                               ],
@@ -788,7 +756,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: ConstColor.white,
                               borderRadius: BorderRadius.circular(8)),
                           child: Padding(
-                            padding: EdgeInsets.all(50.0),
+                            padding: const EdgeInsets.all(50.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -798,7 +766,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       fontSize: 30,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 const Text(
                                   "Use MetaSage Studio to automate actions, design custom screens, custom reports, or web hooks.",
                                   style: TextStyle(
@@ -807,7 +775,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   textAlign: TextAlign.justify,
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Image.asset(ConstImages.customizable)
                               ],
                             ),
@@ -820,7 +788,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: ConstColor.white,
                               borderRadius: BorderRadius.circular(8)),
                           child: Padding(
-                            padding: EdgeInsets.all(50.0),
+                            padding: const EdgeInsets.all(50.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -841,17 +809,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   height: 50,
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child: Text(
+                                    style: ElevatedButton.styleFrom(
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.zero),
+                                        backgroundColor:
+                                            ConstColor.brownAccent),
+                                    child: const Text(
                                       "Browse Community Apps",
                                       style: TextStyle(
                                           color: ConstColor.white,
                                           fontSize: 20),
                                     ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero),
-                                        backgroundColor:
-                                            ConstColor.brownAccent),
                                   ),
                                 )
                               ],
@@ -864,19 +832,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           decoration: BoxDecoration(
                               color: ConstColor.white,
                               borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
+                          child: const Padding(
                             padding: EdgeInsets.all(50.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                Text(
                                   "No corporate bullsh*t",
                                   style: TextStyle(
                                       fontSize: 30,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                const SizedBox(height: 20),
-                                const Text(
+                                SizedBox(height: 20),
+                                Text(
                                     '"With most systems, you get 70% of what you hoped. With MetaSage, you get more than what you expected. You, guys, will transform the market." - Anonymous competitor',
                                     style: TextStyle(
                                       fontSize: 20,
@@ -896,7 +864,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: ConstColor.white,
                               borderRadius: BorderRadius.circular(8)),
                           child: Padding(
-                            padding: EdgeInsets.all(50.0),
+                            padding: const EdgeInsets.all(50.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -920,17 +888,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   height: 50,
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child: Text(
+                                    style: ElevatedButton.styleFrom(
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.zero),
+                                        backgroundColor:
+                                            ConstColor.brownAccent),
+                                    child: const Text(
                                       "Follow Us On GitHub",
                                       style: TextStyle(
                                           color: ConstColor.white,
                                           fontSize: 20),
                                     ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero),
-                                        backgroundColor:
-                                            ConstColor.brownAccent),
                                   ),
                                 )
                               ],
@@ -944,7 +912,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: ConstColor.white,
                               borderRadius: BorderRadius.circular(8)),
                           child: Padding(
-                            padding: EdgeInsets.all(50.0),
+                            padding: const EdgeInsets.all(50.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -968,17 +936,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   height: 50,
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child: Text(
+                                    style: ElevatedButton.styleFrom(
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.zero),
+                                        backgroundColor:
+                                            ConstColor.brownAccent),
+                                    child: const Text(
                                       "View Pricing",
                                       style: TextStyle(
                                           color: ConstColor.white,
                                           fontSize: 20),
                                     ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero),
-                                        backgroundColor:
-                                            ConstColor.brownAccent),
                                   ),
                                 )
                               ],
@@ -992,7 +960,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: ConstColor.white,
                               borderRadius: BorderRadius.circular(8)),
                           child: Padding(
-                            padding: EdgeInsets.all(50.0),
+                            padding: const EdgeInsets.all(50.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -1023,7 +991,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
@@ -1031,194 +999,201 @@ class _HomeScreenState extends State<HomeScreen> {
           width: MediaQuery.of(context).size.width * 1,
           child: Column(
             children: [
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "METASAGE",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: ConstColor.white),
               ),
-              SizedBox(height: 30),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                Column(
+              const SizedBox(height: 30),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Community",
-                        style:
-                            TextStyle(color: ConstColor.white, fontSize: 22)),
-                    SizedBox(
-                      height: 10,
-                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: communityBList
-                          .map((item) => Row(
-                                children: [
-                                  Text(
-                                    item.title.toString(),
-                                    style: TextStyle(
-                                        color: ConstColor.greyColor,
-                                        fontSize: 18),
-                                    //selectionColor: ConstColor.white,
-                                  ),
-                                  SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    const Text("Open Source",
-                        style:
-                            TextStyle(color: ConstColor.white, fontSize: 22)),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: openSourceLst
-                          .map((item) => Row(
-                                children: [
-                                  Text(
-                                    item.title.toString(),
-                                    style: TextStyle(
-                                        color: ConstColor.greyColor,
-                                        fontSize: 18),
-                                    //selectionColor: ConstColor.white,
-                                  ),
-                                  SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Services",
-                        style:
-                            TextStyle(color: ConstColor.white, fontSize: 22)),
-                    // Container(
-                    //   height: 1,
-                    //   width: size.width * 0.15,
-                    //   color: ConstColor.orange,
-                    // ),
-
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: servicesLt
-                          .map((item) => Row(
-                                children: [
-                                  Text(item.title.toString(),
-                                      style: TextStyle(
-                                          color: ConstColor.greyColor,
-                                          fontSize: 18)),
-                                  SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("About us",
-                        style: TextStyle(
-                          fontSize: 22,
-                          color: ConstColor.white,
-                        )),
-                    // Container(
-                    //   height: 1,
-                    //   width: size.width * 0.15,
-                    //   color: ConstColor.bluegrey,
-                    // ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: aboutusList
-                          .map((item) => Row(
-                                children: [
-                                  Text(item.title.toString(),
-                                      style: TextStyle(
-                                          color: ConstColor.greyColor,
-                                          fontSize: 18)),
-                                  SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: Column(
-                    children: [
-                      Text(
-                        "Meta sage unique value proposition is to be at the same time very easy to use and fully integrated.",
-                        style: TextStyle(
-                            color: ConstColor.greyColor, fontSize: 18),
-                        textAlign: TextAlign.justify,
-                      ),
-                      SizedBox(height: 30),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.1,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Image.asset(
-                              ConstImages.fb,
-                              color: ConstColor.white,
-                              width: 20,
-                              //color: Colors.white,
-                            ),
-                            Image.asset(
-                              ConstImages.twitter,
-                              color: ConstColor.white,
-                              width: 20,
-                            ),
-                            Image.asset(
-                              ConstImages.tiktok,
-                              color: ConstColor.white,
-                              width: 20,
-                            ),
-                            Image.asset(
-                              ConstImages.github,
-                              // color: ConstColor.white,
-                              width: 20,
-                            ),
-                            Image.asset(
-                              ConstImages.instagram,
-                              color: ConstColor.white,
-                              width: 40,
-                            )
-                          ],
+                      children: [
+                        const Text("Community",
+                            style: TextStyle(
+                                color: ConstColor.white, fontSize: 20)),
+                        const SizedBox(
+                          height: 7,
                         ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: communityBList
+                              .map((item) => Row(
+                                    children: [
+                                      Text(
+                                        item.title.toString(),
+                                        style: const TextStyle(
+                                            color: ConstColor.greyColor,
+                                            fontSize: 14),
+                                        //selectionColor: ConstColor.white,
+                                      ),
+                                      const SizedBox(
+                                          height:
+                                              25), // Adjust the width as needed
+                                    ],
+                                  ))
+                              .toList(),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text("Open Source",
+                            style: TextStyle(
+                                color: ConstColor.white, fontSize: 20)),
+                        const SizedBox(
+                          height: 7,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: openSourceLst
+                              .map((item) => Row(
+                                    children: [
+                                      Text(
+                                        item.title.toString(),
+                                        style: const TextStyle(
+                                            color: ConstColor.greyColor,
+                                            fontSize: 14),
+                                        //selectionColor: ConstColor.white,
+                                      ),
+                                      const SizedBox(
+                                          height:
+                                              25), // Adjust the width as needed
+                                    ],
+                                  ))
+                              .toList(),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Services",
+                            style: TextStyle(
+                                color: ConstColor.white, fontSize: 20)),
+                        const SizedBox(
+                          height: 7,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: servicesLt
+                              .map((item) => Row(
+                                    children: [
+                                      Text(item.title.toString(),
+                                          style: const TextStyle(
+                                              color: ConstColor.greyColor,
+                                              fontSize: 14)),
+                                      const SizedBox(
+                                          height:
+                                              25), // Adjust the width as needed
+                                    ],
+                                  ))
+                              .toList(),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("About us",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: ConstColor.white,
+                            )),
+                        const SizedBox(
+                          height: 7,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: aboutusList
+                              .map((item) => Row(
+                                    children: [
+                                      Text(item.title.toString(),
+                                          style: const TextStyle(
+                                              color: ConstColor.greyColor,
+                                              fontSize: 14)),
+                                      const SizedBox(
+                                          height:
+                                              25), // Adjust the width as needed
+                                    ],
+                                  ))
+                              .toList(),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Metasage is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.",
+                            style: TextStyle(
+                                color: ConstColor.greyColor, fontSize: 14),
+                            textAlign: TextAlign.justify,
+                          ),
+                          const SizedBox(height: 20),
+                          const Text(
+                            "Metasage unique value proposition is to be at the same time very easy to use and fully integrated.",
+                            style: TextStyle(
+                                color: ConstColor.greyColor, fontSize: 14),
+                            textAlign: TextAlign.justify,
+                          ),
+                          const SizedBox(height: 30),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ConstIcons.fb,
+                              ConstIcons.twitter,
+                              ConstIcons.github,
+                              ConstIcons.instagram,
+                              Image.asset(
+                                ConstImages.tiktok,
+                                color: ConstColor.white,
+                                width: 20,
+                              ),
+                              Image.asset(
+                                ConstImages.github,
+                                // color: ConstColor.white,
+                                width: 20,
+                              ),
+                              Image.asset(
+                                ConstImages.instagram,
+                                color: ConstColor.white,
+                                width: 40,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              ]),
+                    ),
+                  ]),
               Container(
                 color: ConstColor.blackaccent,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Website made with",
-                        style: TextStyle(
-                            color: ConstColor.greyColor, fontSize: 18)),
+                    MouseRegion(
+                      onEnter: (_) {
+                        setState(() {
+                          _isHovered = true;
+                        });
+                      },
+                      onExit: (_) {
+                        setState(() {
+                          _isHovered = false;
+                        });
+                      },
+                      child: Text("Copyright © 2024",
+                          style: TextStyle(
+                              color: _isHovered ? Colors.white : Colors.grey,
+                              fontSize: 18)),
+                    ),
                     Image.asset(
                       ConstImages.metaSage,
                       width: 120,

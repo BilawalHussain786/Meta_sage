@@ -48,8 +48,12 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:meta_sage_web/ui/screen/app_screen.dart';
+import 'package:meta_sage_web/ui/widgets/custom_top_bar.dart';
 
 class TopSheet extends StatefulWidget {
+  const TopSheet({super.key});
+
   @override
   State<TopSheet> createState() => _TopSheetState();
 }
@@ -68,7 +72,7 @@ class _TopSheetState extends State<TopSheet> {
             // Top Sheet ko dikhane ke liye Custom function ka istemal karein
             _showTopSheet(context);
           },
-          child: Text('Top Sheet Dikhaye'),
+          child: const Text('Top Sheet Dikhaye'),
         ),
       ),
     );
@@ -77,13 +81,14 @@ class _TopSheetState extends State<TopSheet> {
   void _showTopSheet(BuildContext context) {
     // Ek custom animation controller banayein
     AnimationController controller = AnimationController(
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
       vsync: Navigator.of(context),
     );
 
     // Animation ko define karein
     Animation<Offset> offsetAnimation =
-        Tween<Offset>(begin: Offset(0.0, -100.0), end: Offset.zero).animate(
+        Tween<Offset>(begin: const Offset(0.0, -100.0), end: Offset.zero)
+            .animate(
       CurvedAnimation(
         parent: controller,
         curve: Curves.easeInOut,
@@ -105,7 +110,7 @@ class _TopSheetState extends State<TopSheet> {
             height: MediaQuery.of(context).size.height * 0.6,
             width: MediaQuery.of(context).size.width * 0.8,
             color: Colors.white,
-            child: Center(
+            child: const Center(
               child: Text('Yeh Top Sheet hai!'),
             ),
           ),
@@ -138,198 +143,57 @@ class _TopSheetState extends State<TopSheet> {
   }
 }
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _MyHomePageState extends State<MyHomePage> {
+  bool _isScreenVisible = false;
+
+  void _toggleScreenVisibility() {
+    setState(() {
+      _isScreenVisible = !_isScreenVisible;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 120, right: 120, top: 150),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc")
-              ],
+      // appBar: AppBar(
+      //   title: const Text('Animated Screen Example'),
+      // ),
+      body: Stack(
+        children: [
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.ease,
+            bottom: _isScreenVisible ? 0 : MediaQuery.of(context).size.height,
+            left: 0,
+            right: 0,
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              color: Colors.white.withOpacity(0.5),
+              child: const Center(
+                child: AppsList(),
+              ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc")
-              ],
+          ),
+          //const Positioned(top: 20, left: 20, child: Text("abc")),
+          // const Positioned(child: TopBar()),
+          Positioned(
+            bottom: 20,
+            left: MediaQuery.of(context).size.width / 2 - 25,
+            child: FloatingActionButton(
+              onPressed: _toggleScreenVisibility,
+              child: Icon(
+                _isScreenVisible ? Icons.arrow_upward : Icons.arrow_downward,
+              ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc"),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Text("abc")
-              ],
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

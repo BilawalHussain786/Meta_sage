@@ -17,7 +17,8 @@ class _OptimizeProductsState extends State<OptimizeProducts> {
       children: [
         Text(
           "Optimized for productivity",
-          style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 80, fontWeight: FontWeight.bold, fontFamily: "Caveat"),
         ),
         SizedBox(height: 200),
         Container(

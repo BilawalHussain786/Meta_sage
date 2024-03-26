@@ -24,7 +24,7 @@ class _CommunityListState extends State<CommunityList> {
               Padding(
                 padding: const EdgeInsets.only(top: 20, bottom: 20),
                 child: SizedBox(
-                  height: 280,
+                  height: 320,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -38,7 +38,7 @@ class _CommunityListState extends State<CommunityList> {
                             width: size.width * 0.15,
                             color: ConstColor.orange,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Column(
@@ -47,7 +47,33 @@ class _CommunityListState extends State<CommunityList> {
                                 .map((item) => Row(
                                       children: [
                                         Text(item.title.toString()),
-                                        SizedBox(
+                                        const SizedBox(
+                                            height:
+                                                30), // Adjust the width as needed
+                                      ],
+                                    ))
+                                .toList(),
+                          ),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          const Text("Empower Education",
+                              style: TextStyle(color: ConstColor.orange)),
+                          Container(
+                            height: 1,
+                            width: size.width * 0.15,
+                            color: ConstColor.orange,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: empowerList
+                                .map((item) => Row(
+                                      children: [
+                                        Text(item.title.toString()),
+                                        const SizedBox(
                                             height:
                                                 30), // Adjust the width as needed
                                       ],
@@ -59,17 +85,17 @@ class _CommunityListState extends State<CommunityList> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Get The Software",
+                          const Text("Get The Software",
                               style: TextStyle(color: ConstColor.greenColor)),
                           Container(
                             height: 1,
                             width: size.width * 0.15,
                             color: ConstColor.greenColor,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Column(
@@ -78,7 +104,7 @@ class _CommunityListState extends State<CommunityList> {
                                 .map((item) => Row(
                                       children: [
                                         Text(item.title.toString()),
-                                        SizedBox(
+                                        const SizedBox(
                                             height:
                                                 30), // Adjust the width as needed
                                       ],
@@ -90,14 +116,14 @@ class _CommunityListState extends State<CommunityList> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Collaborate",
+                          const Text("Collaborate",
                               style: TextStyle(color: ConstColor.brownColor)),
                           Container(
                             height: 1,
                             width: size.width * 0.15,
                             color: ConstColor.brownColor,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Column(
@@ -106,7 +132,7 @@ class _CommunityListState extends State<CommunityList> {
                                 .map((item) => Row(
                                       children: [
                                         Text(item.title.toString()),
-                                        SizedBox(
+                                        const SizedBox(
                                             height:
                                                 30), // Adjust the width as needed
                                       ],
@@ -118,14 +144,14 @@ class _CommunityListState extends State<CommunityList> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Get Services",
+                          const Text("Get Services",
                               style: TextStyle(color: ConstColor.bluegrey)),
                           Container(
                             height: 1,
                             width: size.width * 0.15,
                             color: ConstColor.bluegrey,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Column(
@@ -134,7 +160,7 @@ class _CommunityListState extends State<CommunityList> {
                                 .map((item) => Row(
                                       children: [
                                         Text(item.title.toString()),
-                                        SizedBox(
+                                        const SizedBox(
                                             height:
                                                 30), // Adjust the width as needed
                                       ],
@@ -145,36 +171,6 @@ class _CommunityListState extends State<CommunityList> {
                       ),
                     ],
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Empower Education",
-                        style: TextStyle(color: ConstColor.orange)),
-                    Container(
-                      height: 1,
-                      width: size.width * 0.15,
-                      color: ConstColor.orange,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: empowerList
-                          .map((item) => Row(
-                                children: [
-                                  Text(item.title.toString()),
-                                  SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
                 ),
               ),
             ],

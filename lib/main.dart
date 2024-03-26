@@ -5,7 +5,7 @@ import 'package:meta_sage_web/ui/widgets/video_player.dart';
 //import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
-  runApp(MetaSageApp());
+  runApp(const MetaSageApp());
 }
 
 class MetaSageApp extends StatefulWidget {
@@ -18,7 +18,9 @@ class MetaSageApp extends StatefulWidget {
 class _MetaSageAppState extends State<MetaSageApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false, title: "MetaSage", home: TopBar());
+    return const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "MetaSage",
+        home: TabBarExample());
   }
 }

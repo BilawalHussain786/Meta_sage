@@ -1,23 +1,166 @@
+// import 'package:flutter/material.dart';
+// import 'package:flutter/widgets.dart';
+// import 'package:meta_sage_web/constant/const_color.dart';
+// import 'package:meta_sage_web/constant/const_images.dart';
+// import 'package:meta_sage_web/ui/screen/app_screen.dart';
+// import 'package:meta_sage_web/ui/screen/community_screen.dart';
+// import 'package:meta_sage_web/ui/screen/home_screen.dart';
+
+// class TopBar extends StatefulWidget {
+//   const TopBar({super.key});
+
+//   @override
+//   State<TopBar> createState() => _TopBarState();
+// }
+
+// class _TopBarState extends State<TopBar> {
+//   String _selectedTab = ""; // Default selected tab
+//   double _sizedBoxHeight() {
+//     // If _selectedTab is either 'App' or 'Community', return 500; otherwise, return 0.
+//     return (_selectedTab == 'Features' || _selectedTab == 'Community')
+//         ? 500
+//         : 0;
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: ConstColor.white,
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.symmetric(horizontal: 90),
+//               child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                 children: [
+//                   Row(
+//                     children: [
+//                       Image.asset(
+//                         ConstImages.metaSage,
+//                         height: 100,
+//                       ),
+//                     ],
+//                   ),
+//                   SizedBox(
+//                     width: MediaQuery.of(context).size.width * 0.5,
+//                     child: Row(
+//                       children: [
+//                         _buildTab('Features', Icons.arrow_downward_sharp),
+//                         const SizedBox(width: 30),
+//                         _buildTab('Community', Icons.arrow_downward_sharp),
+//                         const SizedBox(width: 30),
+//                         // const Text(
+//                         //   'Pricing',
+//                         //   style: TextStyle(
+//                         //       fontSize: 14, fontWeight: FontWeight.bold),
+//                         // ),
+//                         const SizedBox(width: 30),
+//                         const Text('Contact',
+//                             style: TextStyle(
+//                                 fontSize: 14, fontWeight: FontWeight.bold)),
+//                       ],
+//                     ),
+//                   ),
+//                   // const Row(
+//                   //   children: [
+//                   //     Text('SignUp',
+//                   //         style: TextStyle(
+//                   //             fontSize: 14, fontWeight: FontWeight.bold)),
+//                   //     SizedBox(width: 30),
+//                   // ElevatedButton(
+//                   //   style: ElevatedButton.styleFrom(
+//                   //     backgroundColor: ConstColor.brownColor,
+//                   //   ),
+//                   //   onPressed: () {
+//                   //     Navigator.push(context,
+//                   //         MaterialPageRoute(builder: (_) {
+//                   //       return const HomeScreen();
+//                   //     }));
+//                   //   },
+//                   //   child: Text(
+//                   //     "Try It Free",
+//                   //     style: TextStyle(color: ConstColor.white),
+//                   //   ),
+//                   // ),
+//                   //   ],
+//                   // ),
+//                 ],
+//               ),
+//             ),
+//             SizedBox(
+//               height: _sizedBoxHeight(),
+//               child: Stack(
+//                 children: [
+//                   Visibility(
+//                     visible: _selectedTab == 'Features',
+//                     child: const AppsList(),
+//                   ),
+//                   Visibility(
+//                     visible: _selectedTab == 'Community',
+//                     child: const CommunityList(),
+//                   ),
+//                   // Add more Visibility widgets for other tabs
+//                 ],
+//               ),
+//             ),
+//             const HomeScreen(),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   Widget _buildTab(String tabName, IconData iconData) {
+//     bool isSelected = _selectedTab == tabName; // Check if this tab is selected
+//     return GestureDetector(
+//       onTap: () {
+//         setState(() {
+//           // Toggle the selection of the tab
+//           _selectedTab = isSelected ? "" : tabName;
+//         });
+//       },
+//       child: Row(
+//         children: [
+//           Text(
+//             tabName,
+//             style: TextStyle(
+//                 color: isSelected ? ConstColor.brownColor : null,
+//                 fontSize: 14,
+//                 fontWeight: FontWeight.bold),
+//           ),
+//           const SizedBox(width: 5), // Add spacing between icon and text
+//           Icon(isSelected ? Icons.close : iconData,
+//               size: 15,
+//               color: isSelected
+//                   ? ConstColor.brownColor
+//                   : null), // Change icon based on selection
+//         ],
+//       ),
+//     );
+//   }
+// }
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:meta_sage_web/constant/const_color.dart';
 import 'package:meta_sage_web/constant/const_images.dart';
 import 'package:meta_sage_web/ui/screen/app_screen.dart';
 import 'package:meta_sage_web/ui/screen/community_screen.dart';
 import 'package:meta_sage_web/ui/screen/home_screen.dart';
 
-class TopBar extends StatefulWidget {
-  const TopBar({Key? key}) : super(key: key);
+class TabBarExample extends StatefulWidget {
+  const TabBarExample({super.key});
 
   @override
-  State<TopBar> createState() => _TopBarState();
+  _TabBarExampleState createState() => _TabBarExampleState();
 }
 
-class _TopBarState extends State<TopBar> {
-  String _selectedTab = ""; // Default selected tab
-  double _sizedBoxHeight() {
-    // If _selectedTab is either 'App' or 'Community', return 500; otherwise, return 0.
-    return (_selectedTab == 'App' || _selectedTab == 'Community') ? 500 : 0;
+class _TabBarExampleState extends State<TabBarExample> {
+  String _selectedTab = '';
+
+  void _toggleScreenVisibility(String tabName) {
+    setState(() {
+      _selectedTab = _selectedTab == tabName ? '' : tabName;
+    });
   }
 
   @override
@@ -25,12 +168,50 @@ class _TopBarState extends State<TopBar> {
     return Scaffold(
       backgroundColor: ConstColor.white,
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 90),
+            const Padding(
+              padding: EdgeInsets.only(top: 100.0),
+              child: HomeScreen(),
+            ),
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.ease,
+              top: _selectedTab == 'Features'
+                  ? 100
+                  : -MediaQuery.of(context).size.height,
+              left: 0,
+              right: 0,
+              height: MediaQuery.of(context).size.height,
+              child: Container(
+                // color: Colors.blue,
+                alignment: Alignment.center,
+                child: const AppsList(),
+              ),
+            ),
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.ease,
+              top: _selectedTab == 'Community'
+                  ? 100
+                  : -MediaQuery.of(context).size.height,
+              left: 0,
+              right: 0,
+              height: MediaQuery.of(context).size.height,
+              child: Container(
+                // color: Colors.green,
+                alignment: Alignment.center,
+                child: const CommunityList(),
+              ),
+            ),
+
+            // Tab bar
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
                     children: [
@@ -40,66 +221,31 @@ class _TopBarState extends State<TopBar> {
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      _buildTab('App', Icons.arrow_downward_sharp),
-                      SizedBox(width: 30),
-                      _buildTab('Community', Icons.arrow_downward_sharp),
-                      SizedBox(width: 30),
-                      Text(
-                        'Pricing',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(width: 30),
-                      Text('Contact',
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text('SignUp',
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold)),
-                      SizedBox(width: 30),
-                      // ElevatedButton(
-                      //   style: ElevatedButton.styleFrom(
-                      //     backgroundColor: ConstColor.brownColor,
-                      //   ),
-                      //   onPressed: () {
-                      //     Navigator.push(context,
-                      //         MaterialPageRoute(builder: (_) {
-                      //       return const HomeScreen();
-                      //     }));
-                      //   },
-                      //   child: Text(
-                      //     "Try It Free",
-                      //     style: TextStyle(color: ConstColor.white),
-                      //   ),
-                      // ),
-                    ],
-                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Row(
+                      children: [
+                        _buildTab('Features', Icons.arrow_downward_sharp),
+                        const SizedBox(width: 30),
+                        _buildTab('Community', Icons.arrow_downward_sharp),
+                        const SizedBox(width: 30),
+                        // const Text(
+                        //   'Pricing',
+                        //   style: TextStyle(
+                        //       fontSize: 14, fontWeight: FontWeight.bold),
+                        // ),
+                        const SizedBox(width: 30),
+                        const Text('Contact',
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  )
+                  //Add more tabs as needed
                 ],
               ),
             ),
-            SizedBox(
-              height: _sizedBoxHeight(),
-              child: Stack(
-                children: [
-                  Visibility(
-                    visible: _selectedTab == 'App',
-                    child: AppsList(),
-                  ),
-                  Visibility(
-                    visible: _selectedTab == 'Community',
-                    child: CommunityList(),
-                  ),
-                  // Add more Visibility widgets for other tabs
-                ],
-              ),
-            ),
-            HomeScreen(),
+            //const Positioned(top: 100, left: 0, right: 0, child: HomeScreen())
           ],
         ),
       ),
@@ -107,29 +253,24 @@ class _TopBarState extends State<TopBar> {
   }
 
   Widget _buildTab(String tabName, IconData iconData) {
-    bool isSelected = _selectedTab == tabName; // Check if this tab is selected
+    final isSelected = _selectedTab == tabName;
+
     return GestureDetector(
       onTap: () {
-        setState(() {
-          // Toggle the selection of the tab
-          _selectedTab = isSelected ? "" : tabName;
-        });
+        _toggleScreenVisibility(tabName);
       },
       child: Row(
         children: [
           Text(
             tabName,
             style: TextStyle(
-                color: isSelected ? ConstColor.brownColor : null,
-                fontSize: 14,
-                fontWeight: FontWeight.bold),
+              color: isSelected ? ConstColor.brownColor : null,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          SizedBox(width: 5), // Add spacing between icon and text
+          const SizedBox(width: 5),
           Icon(isSelected ? Icons.close : iconData,
-              size: 15,
-              color: isSelected
-                  ? ConstColor.brownColor
-                  : null), // Change icon based on selection
+              size: 15, color: isSelected ? ConstColor.brownColor : null),
         ],
       ),
     );
