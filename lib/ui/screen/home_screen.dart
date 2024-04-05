@@ -1,17 +1,14 @@
-import 'dart:html';
-
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:meta_sage_web/constant/const_color.dart';
 import 'package:meta_sage_web/constant/const_images.dart';
-import 'package:meta_sage_web/ui/widgets/app_lists.dart';
-import 'package:meta_sage_web/ui/widgets/comminity_List.dart';
-import 'package:meta_sage_web/ui/widgets/reuseable_container.dart';
-import 'package:meta_sage_web/ui/widgets/video_player.dart';
+import 'package:meta_sage_web/ui/widgets/enterprise_software.dart';
+import 'package:meta_sage_web/ui/widgets/footer.dart';
+import 'package:meta_sage_web/ui/widgets/images_list.dart';
+import 'package:meta_sage_web/ui/widgets/optimize_wiget.dart';
+import 'package:meta_sage_web/ui/widgets/gridView.dart';
 import 'package:video_player/video_player.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,22 +23,26 @@ class _HomeScreenState extends State<HomeScreen> {
   //final videoPlayerController = TextEditingController();
   late Future<void> _inilizevideoPlayerFuture;
   bool isPlaying = true;
-
   double _currentSliderValue = 0.0;
-
+  late List<bool> itemHoverStates;
   @override
   void initState() {
+    itemHoverStates = List.generate(photo.length, (index) => false);
     _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(
         "https://download.odoocdn.com/videos/odoo_com/video_homepage.webm"));
     _inilizevideoPlayerFuture = _videoPlayerController.initialize().then((_) {
-      // _videoPlayerController.play();
-      //_videoPlayerController.setVolume(5);
+      // if (isPlaying) {
+      //   _videoPlayerController.play().catchError((Object error) {
+      //     // Handle any errors thrown while attempting to play the video.
+      //     print('Error: $error');
+      //     // You can choose to show an error message to the user or perform any other actions.
+      //   });
+      // }
+      _videoPlayerController.setVolume(0);
       _videoPlayerController.setLooping(true);
+      setState(() {});
       _videoPlayerController.addListener(() {
         setState(() {
-          if (isPlaying) {
-            _videoPlayerController.play();
-          }
           _currentSliderValue =
               _videoPlayerController.value.position.inSeconds.toDouble();
         });
@@ -56,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (isPlaying) {
         _videoPlayerController.pause();
       } else {
-        _videoPlayerController.play();
+        _videoPlayerController.play().catchError((Object e) {});
       }
       isPlaying = !isPlaying;
     });
@@ -74,469 +75,408 @@ class _HomeScreenState extends State<HomeScreen> {
     return SingleChildScrollView(
       child: Column(children: [
         const Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 100,
+          padding: EdgeInsets.symmetric(horizontal: 100),
+          child: Text(
+            "Transforming Your Digital Landscape With Metasage.",
+            style: TextStyle(
+                fontSize: 60,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Caveat'),
           ),
-          child: const Text(
-            "All your business on one platform",
-            style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-          ),
+        ),
+        const Text(
+          "Innovation Meets Expertise !",
+          style: TextStyle(
+              fontSize: 50, fontWeight: FontWeight.w900, fontFamily: 'Caveat'),
         ),
         const SizedBox(height: 100),
         Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.elliptical(800, 300),
-                topRight: Radius.elliptical(800, 300)),
+                topLeft: Radius.elliptical(500, 150),
+                topRight: Radius.elliptical(500, 150)),
             color: ConstColor.lightgray,
           ),
           //height: MediaQuery.of(context).size.height * 1,
-          width: MediaQuery.of(context).size.width * 1,
-          child: Padding(
-            padding: const EdgeInsets.only(right: 120, left: 120, top: 150),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Accounting",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Knowledge",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Sign",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "CRM",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Studio",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Subscriptions",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Rental",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Point of Sale",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Discuss",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Documents",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            "Project",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "TimeSheets",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          const Text(
-                            "Field Service",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Planning",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Helpdesk",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Website",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Socila Marketing",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Email Marketing",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Purchase",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Inventory",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Manufacturing",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Sales",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "HR",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ReuseableContainer(
-                            url: "assets/images/accounting.png",
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Dashoard",
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 40),
-                  Text(
-                    "Imagine a vast collection of business apps at your disposal.",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                      "Got something to improve? There is an app for that.No complexity, no cost, just a one-click install.",
-                      style: TextStyle(fontSize: 15)),
-                  SizedBox(height: 30),
-                  Text(
-                      "Each app simplifies a process and empowers more people. Imagine the impact when everyone gets the right tool for the job, with perfect integration.",
-                      style: TextStyle(fontSize: 15)),
-                  SizedBox(height: 70),
-                  Container(
-                    // height: 500,
-                    width: MediaQuery.of(context).size.width * 1,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(400),
-                          bottomLeft: Radius.circular(400)),
-                      color: ConstColor.white,
-                    ),
-                    child: Column(
-                      children: [
-                        SizedBox(height: 60),
-                        Text(
-                          "Level up your quality of work",
-                          style: TextStyle(
-                              fontSize: 80,
-                              fontFamily: "Caveat",
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 70),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.8,
-                          decoration: BoxDecoration(
-                              color: ConstColor.white,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Videobuilder(),
-                            // child: VideoPlayerWiget(
-                            //   videoUrl: (Uri.parse(
-                            //       "https://download.odoocdn.com/videos/odoo_com/video_homepage.webm")),
-                            // ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                          onPressed: _togglePlaying,
+          width: size.width * 1,
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(right: 250, left: 250, top: 150),
+                child: MyGridView(),
+              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(right: 200, left: 200, top: 150),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //     children: [
+              //       Column(
+              //         children: [
+              //           ReuseableContainer(
+              //             url: ConstImages.finance,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Finance",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.pos,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Point of Sales ",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.fieldforce,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Field Force",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.inventoryIcon,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Inventory",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //         ],
+              //       ),
+              //       Column(
+              //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //         children: [
+              //           ReuseableContainer(
+              //             url: ConstImages.sign,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Digital Sign",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.documents,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Document",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.helpdesk,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Help Desk",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.manufacturing,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Manufacturing",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //         ],
+              //       ),
+              //       Column(
+              //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //         children: [
+              //           ReuseableContainer(
+              //             url: ConstImages.crm,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "CRM",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.projects,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Project",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.socialmarketing,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Social Marketing",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.sales,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Sale",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //         ],
+              //       ),
+              //       Column(
+              //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //         children: [
+              //           ReuseableContainer(
+              //             url: ConstImages.subscription,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Subscription",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.attandence,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Attandence",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.emailmarketing,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Email Marketing",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.humanResource,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Human Resource",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //         ],
+              //       ),
+              //       Column(
+              //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //         children: [
+              //           ReuseableContainer(
+              //             url: ConstImages.rental,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Rental",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.planing,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Planing",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.purchase,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Purchase",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //           const SizedBox(height: 20),
+              //           ReuseableContainer(
+              //             url: ConstImages.dashboard,
+              //           ),
+              //           const SizedBox(height: 10),
+              //           const Text(
+              //             "Dashboard",
+              //             style: TextStyle(
+              //                 fontSize: 14, fontWeight: FontWeight.w600),
+              //           ),
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
 
-                          // onPressed: () {
-                          //   setState(() {
-                          //     if (_videoPlayerController.value.isPlaying) {
-                          //       _videoPlayerController.pause();
-                          //     } else {
-                          //       _videoPlayerController.play();
-                          //     }
-                          //     isPlaying = !isPlaying;
-                          //   });
-                          // },
-                          icon:
-                              Icon(isPlaying ? Icons.pause : Icons.play_arrow)),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: Slider(
-                          value: _currentSliderValue,
-                          min: 0.0,
-                          max: _videoPlayerController.value.duration.inSeconds
-                              .toDouble(),
-                          onChanged: (value) {
-                            setState(() {
-                              _currentSliderValue = value;
-                            });
-                            _videoPlayerController
-                                .seekTo(Duration(seconds: value.toInt()));
-                          },
+              const SizedBox(height: 40),
+              const Padding(
+                padding: EdgeInsets.only(right: 150, left: 150, top: 60),
+                child: Text(
+                  "Imagine a vast collection of business apps at your disposal.",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
+                ),
+              ),
+              //SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.only(right: 150, left: 150, top: 10),
+                child: Text(
+                    "Got something to improve? There is an app for that.",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(
+                  right: 150,
+                  left: 150,
+                ),
+                child: Text("No complexity, no cost, just a one-click install.",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
+              ),
+              // SizedBox(height: 30),
+              const Padding(
+                padding: EdgeInsets.only(right: 150, left: 150, top: 30),
+                child: Text(
+                    "Each app simplifies a process and empowers more people.",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(right: 150, left: 150),
+                child: Text(
+                    " Imagine the impact when everyone gets the right tool for the job, with perfect integration.",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
+              ),
+              const SizedBox(height: 70),
+              Padding(
+                padding: const EdgeInsets.only(left: 100),
+                child: Container(
+                  // height: 500,
+                  width: MediaQuery.of(context).size.width * 1,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(400),
+                        bottomLeft: Radius.circular(500)),
+                    color: ConstColor.white,
+                  ),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 60),
+                      const Text(
+                        "Level up your quality of work",
+                        style: TextStyle(
+                            fontSize: 100,
+                            fontFamily: "Caveat",
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 50),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        decoration: BoxDecoration(
+                            color: ConstColor.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey
+                                    .withOpacity(0.2), // shadow color
+                                spreadRadius: 5, // how spread the shadow is
+                                blurRadius: 7, // how blurred the shadow is
+                                offset: const Offset(
+                                    3, 4), // changes position of shadow
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Videobuilder(),
+                          // child: VideoPlayerWiget(
+                          //   videoUrl: (Uri.parse(
+                          //       "https://download.odoocdn.com/videos/odoo_com/video_homepage.webm")),
+                          // ),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 100),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                      onPressed: _togglePlaying,
+                      // onPressed: () {
+                      //   setState(() {
+                      //     if (_videoPlayerController.value.isPlaying) {
+                      //       _videoPlayerController.pause();
+                      //     } else {
+                      //       _videoPlayerController.play();
+                      //     }
+                      //     isPlaying = !isPlaying;
+                      //   });
+                      // },
+                      icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow)),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Slider(
+                      value: _currentSliderValue,
+                      min: 0.0,
+                      max: _videoPlayerController.value.duration.inSeconds
+                          .toDouble(),
+                      onChanged: (value) {
+                        setState(() {
+                          _currentSliderValue = value;
+                        });
+                        _videoPlayerController
+                            .seekTo(Duration(seconds: value.toInt()));
+                      },
+                    ),
+                  ),
                 ],
               ),
-            ),
+              const SizedBox(height: 100),
+              const OptimizeProducts(),
+              const SizedBox(height: 100),
+            ],
           ),
         ),
-        Text("All the tech in one platform",
-            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-        SizedBox(height: 40),
+        const SizedBox(height: 50),
+        const Text("All the tech in one platform",
+            style: TextStyle(
+                fontSize: 90,
+                fontWeight: FontWeight.bold,
+                fontFamily: "Caveat")),
+        const SizedBox(height: 40),
+        // const Padding(
+        //   padding: EdgeInsets.symmetric(horizontal: 80),
+        //   child: TechGridView(),
+        // ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 80),
           child: Row(
@@ -552,7 +492,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Shop_Floor.webp",
+                        ConstImages.shopFloor,
                         height: 180,
                         width: 180,
                       ),
@@ -573,7 +513,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Expenses.webp",
+                        ConstImages.expenses,
                         height: 180,
                         width: 180,
                       ),
@@ -594,7 +534,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Point_of_Sale.webp",
+                        ConstImages.pointofSale,
                         height: 180,
                         width: 180,
                       ),
@@ -615,7 +555,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/IoT.webp",
+                        ConstImages.ioT,
                         height: 180,
                         width: 180,
                       ),
@@ -648,14 +588,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: FittedBox(
                         fit: BoxFit.contain, // You can adjust the fit here
                         child: Image.asset(
-                          "assets/images/Frontdesk.webp",
+                          ConstImages.frontdesk,
                           height: 180,
                           width: 180,
                         ),
                       ),
                     ),
                   ),
-                  Text("Frontdesk",
+                  const Text("Frontdesk",
                       style:
                           TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
                 ],
@@ -670,13 +610,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Inventory.webp",
+                        ConstImages.inventory,
                         height: 180,
                         width: 180,
                       ),
                     ),
                   ),
-                  Text("Inventory",
+                  const Text("Inventory",
                       style:
                           TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
                 ],
@@ -691,7 +631,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ConstColor.lightgray),
                     child: Center(
                       child: Image.asset(
-                        "assets/images/Kiosk.webp",
+                        ConstImages.kiosk,
                         height: 180,
                         width: 180,
                       ),
@@ -706,599 +646,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         const SizedBox(height: 50),
-        Container(
-          //height: MediaQuery.of(context).size.height * 1,
-          width: MediaQuery.of(context).size.width * 1,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.elliptical(200, 300),
-                bottomRight: Radius.elliptical(200, 300)),
-            color: ConstColor.lightgray,
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 100.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 50),
-                const Text(
-                  "Enterprise software done right.",
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-                ),
-                // MasonryGridView.builder(
-                //   itemCount: differentCList.length,
-                //   gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                //       crossAxisCount: 2),
-                //   itemBuilder: (context, index) => Container(
-                //     color: ConstColor.white,
-                //     child: Text("${index + 1}"),
-                //     //height: 300,
-                //   ),
-                // ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          decoration: BoxDecoration(
-                              color: ConstColor.white,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: EdgeInsets.all(50.0),
-                            child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "Open source",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const Text(
-                                  "Behind the technology is a community of 100k+ developers collaborating worldwide. We're united by the spirit of open source, and a common vision: to transform companies, empower employees.",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                  textAlign: TextAlign.justify,
-                                ),
-                                const SizedBox(height: 20),
-                                const Text(
-                                    "MetaSage is available in two editions:",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300,
-                                    )),
-                                const Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: '• Community: ',
-                                        style: TextStyle(
-                                            fontSize: 23,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      TextSpan(
-                                          text: 'Open Source, 100% free.',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w300,
-                                          )),
-                                    ],
-                                  ),
-                                ),
-                                const Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      TextSpan(
-                                          text: '• Enterprise: ',
-                                          style: TextStyle(
-                                              fontSize: 23,
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text:
-                                            'extra apps, infrastructure and professional services.',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 20),
-                                SizedBox(
-                                  height: 50,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "Compare Editions",
-                                      style: TextStyle(
-                                          color: ConstColor.white,
-                                          fontSize: 20),
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero),
-                                        backgroundColor:
-                                            ConstColor.brownAccent),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          decoration: BoxDecoration(
-                              color: ConstColor.white,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: EdgeInsets.all(50.0),
-                            child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "Highly customizable",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(height: 20),
-                                const Text(
-                                  "Use MetaSage Studio to automate actions, design custom screens, custom reports, or web hooks.",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                  textAlign: TextAlign.justify,
-                                ),
-                                SizedBox(height: 20),
-                                Image.asset(ConstImages.customizable)
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          decoration: BoxDecoration(
-                              color: ConstColor.white,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: EdgeInsets.all(50.0),
-                            child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "40k+ community apps",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 20),
-                                const Text(
-                                    "Thanks to it's open source development model, MetaSage became the world's largest business apps store. Imagine getting an app for every business needs.",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300,
-                                    )),
-                                SizedBox(
-                                  height: 50,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "Browse Community Apps",
-                                      style: TextStyle(
-                                          color: ConstColor.white,
-                                          fontSize: 20),
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero),
-                                        backgroundColor:
-                                            ConstColor.brownAccent),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          decoration: BoxDecoration(
-                              color: ConstColor.white,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: EdgeInsets.all(50.0),
-                            child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "No corporate bullsh*t",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 20),
-                                const Text(
-                                    '"With most systems, you get 70% of what you hoped. With MetaSage, you get more than what you expected. You, guys, will transform the market." - Anonymous competitor',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300,
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          decoration: BoxDecoration(
-                              color: ConstColor.white,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: EdgeInsets.all(50.0),
-                            child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "No vendor lock-in",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 20),
-                                const Text(
-                                  "No proprietary data format, just PostgreSQL: you own your data. No software lock-in: you get the source code, GitHub access, and the flexibility to host on our infrastructure, or on premise.",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                  textAlign: TextAlign.justify,
-                                ),
-                                const SizedBox(height: 20),
-                                SizedBox(
-                                  height: 50,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "Follow Us On GitHub",
-                                      style: TextStyle(
-                                          color: ConstColor.white,
-                                          fontSize: 20),
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero),
-                                        backgroundColor:
-                                            ConstColor.brownAccent),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          decoration: BoxDecoration(
-                              color: ConstColor.white,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: EdgeInsets.all(50.0),
-                            child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "Fair pricing",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 20),
-                                const Text(
-                                  "No usage-based pricing, no feature upselling, no long term contracts, no hosting limits, no surprises... just a single price per user - all inclusive.",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                  textAlign: TextAlign.justify,
-                                ),
-                                const SizedBox(height: 20),
-                                SizedBox(
-                                  height: 50,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "View Pricing",
-                                      style: TextStyle(
-                                          color: ConstColor.white,
-                                          fontSize: 20),
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero),
-                                        backgroundColor:
-                                            ConstColor.brownAccent),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          decoration: BoxDecoration(
-                              color: ConstColor.white,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: EdgeInsets.all(50.0),
-                            child: Column(
-                              //mainAxisAlignment: MainAxisAlignment.,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "A unique value proposition",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 20),
-                                Image.asset(
-                                  "assets/images/proposition.PNG",
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.3,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(
+        const EnterpriseSoftware(),
+        const SizedBox(
           height: 20,
         ),
-        Container(
-          // height: MediaQuery.of(context).size.width * 0.3,
-          color: ConstColor.darkBlue,
-          width: MediaQuery.of(context).size.width * 1,
-          child: Column(
-            children: [
-              Text(
-                "META SAGE",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: ConstColor.white),
-              ),
-              SizedBox(height: 30),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Community",
-                        style:
-                            TextStyle(color: ConstColor.white, fontSize: 22)),
-                    // Container(
-                    //   height: 1,
-                    //   width: size.width * 0.15,
-                    //   color: ConstColor.greenColor,
-                    // ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: communityBList
-                          .map((item) => Row(
-                                children: [
-                                  Text(
-                                    item.title.toString(),
-                                    style: TextStyle(
-                                        color: ConstColor.greyColor,
-                                        fontSize: 18),
-                                    //selectionColor: ConstColor.white,
-                                  ),
-                                  SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    const Text("Open Source",
-                        style:
-                            TextStyle(color: ConstColor.white, fontSize: 22)),
-                    // Container(
-                    //   height: 1,
-                    //   width: size.width * 0.15,
-                    //   color: ConstColor.greenColor,
-                    // ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: openSourceLst
-                          .map((item) => Row(
-                                children: [
-                                  Text(
-                                    item.title.toString(),
-                                    style: TextStyle(
-                                        color: ConstColor.greyColor,
-                                        fontSize: 18),
-                                    //selectionColor: ConstColor.white,
-                                  ),
-                                  SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Services",
-                        style:
-                            TextStyle(color: ConstColor.white, fontSize: 22)),
-                    // Container(
-                    //   height: 1,
-                    //   width: size.width * 0.15,
-                    //   color: ConstColor.orange,
-                    // ),
-
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: servicesLt
-                          .map((item) => Row(
-                                children: [
-                                  Text(item.title.toString(),
-                                      style: TextStyle(
-                                          color: ConstColor.greyColor,
-                                          fontSize: 18)),
-                                  SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("About us",
-                        style: TextStyle(
-                          fontSize: 22,
-                          color: ConstColor.white,
-                        )),
-                    // Container(
-                    //   height: 1,
-                    //   width: size.width * 0.15,
-                    //   color: ConstColor.bluegrey,
-                    // ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: aboutusList
-                          .map((item) => Row(
-                                children: [
-                                  Text(item.title.toString(),
-                                      style: TextStyle(
-                                          color: ConstColor.greyColor,
-                                          fontSize: 18)),
-                                  SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: Column(
-                    children: [
-                      Text(
-                        "Meta sage unique value proposition is to be at the same time very easy to use and fully integrated.",
-                        style: TextStyle(
-                            color: ConstColor.greyColor, fontSize: 18),
-                        textAlign: TextAlign.justify,
-                      ),
-                      SizedBox(height: 30),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.1,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Image.asset(
-                              ConstImages.fb,
-                              color: ConstColor.white,
-                              width: 20,
-                              //color: Colors.white,
-                            ),
-                            Image.asset(
-                              ConstImages.twitter,
-                              color: ConstColor.white,
-                              width: 20,
-                            ),
-                            Image.asset(
-                              ConstImages.tiktok,
-                              color: ConstColor.white,
-                              width: 20,
-                            ),
-                            Image.asset(
-                              ConstImages.github,
-                              // color: ConstColor.white,
-                              width: 20,
-                            ),
-                            Image.asset(
-                              ConstImages.instagram,
-                              color: ConstColor.white,
-                              width: 40,
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ]),
-              Container(
-                color: ConstColor.blackaccent,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Website made with",
-                        style: TextStyle(
-                            color: ConstColor.greyColor, fontSize: 18)),
-                    Image.asset(
-                      "assets/images/MetaSage.png",
-                      width: 120,
-                      //height: 100,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        )
+        const Footer(),
       ]),
     );
   }
