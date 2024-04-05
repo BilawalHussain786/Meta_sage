@@ -141,10 +141,12 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:meta_sage_web/constant/const_color.dart';
 import 'package:meta_sage_web/constant/const_images.dart';
 import 'package:meta_sage_web/ui/screen/app_screen.dart';
 import 'package:meta_sage_web/ui/screen/community_screen.dart';
+import 'package:meta_sage_web/ui/screen/drawer_screen.dart';
 import 'package:meta_sage_web/ui/screen/home_screen.dart';
 
 class TabBarExample extends StatefulWidget {
@@ -156,7 +158,10 @@ class TabBarExample extends StatefulWidget {
 
 class _TabBarExampleState extends State<TabBarExample> {
   String _selectedTab = '';
-
+  bool isDesktop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 764;
+  bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width <= 764;
   void _toggleScreenVisibility(String tabName) {
     setState(() {
       _selectedTab = _selectedTab == tabName ? '' : tabName;
@@ -175,14 +180,15 @@ class _TabBarExampleState extends State<TabBarExample> {
               child: HomeScreen(),
             ),
             AnimatedPositioned(
-              duration: const Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 800),
               curve: Curves.ease,
               top: _selectedTab == 'Features'
-                  ? 100
+                  ? 80
                   : -MediaQuery.of(context).size.height,
               left: 0,
               right: 0,
-              height: MediaQuery.of(context).size.height,
+              height: 520,
+              // height: MediaQuery.of(context).size.height,
               child: Container(
                 // color: Colors.blue,
                 alignment: Alignment.center,
@@ -190,14 +196,15 @@ class _TabBarExampleState extends State<TabBarExample> {
               ),
             ),
             AnimatedPositioned(
-              duration: const Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 800),
               curve: Curves.ease,
               top: _selectedTab == 'Community'
-                  ? 100
+                  ? 80
                   : -MediaQuery.of(context).size.height,
               left: 0,
               right: 0,
-              height: MediaQuery.of(context).size.height,
+              height: 400,
+              //  height: MediaQuery.of(context).size.height,
               child: Container(
                 // color: Colors.green,
                 alignment: Alignment.center,
@@ -217,30 +224,44 @@ class _TabBarExampleState extends State<TabBarExample> {
                     children: [
                       Image.asset(
                         ConstImages.metaSage,
-                        height: 100,
+                        height: 90,
                       ),
                     ],
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Row(
-                      children: [
-                        _buildTab('Features', Icons.arrow_downward_sharp),
-                        const SizedBox(width: 30),
-                        _buildTab('Community', Icons.arrow_downward_sharp),
-                        const SizedBox(width: 30),
-                        // const Text(
-                        //   'Pricing',
-                        //   style: TextStyle(
-                        //       fontSize: 14, fontWeight: FontWeight.bold),
-                        // ),
-                        const SizedBox(width: 30),
-                        const Text('Contact',
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold)),
-                      ],
+                  if (isDesktop(context))
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: Row(
+                        children: [
+                          _buildTab('Features', Icons.arrow_downward_sharp),
+                          const SizedBox(width: 30),
+                          _buildTab('Community', Icons.arrow_downward_sharp),
+                          const SizedBox(width: 30),
+                          // const Text(
+                          //   'Pricing',
+                          //   style: TextStyle(
+                          //       fontSize: 14, fontWeight: FontWeight.bold),
+                          // ),
+                          const SizedBox(width: 30),
+                          const Text('Contact',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
                     ),
-                  )
+                  if (isMobile(context))
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (_) {
+                                return const DrawerScreen();
+                              }));
+                            },
+                            icon: const Icon(Icons.density_medium))
+                      ],
+                    )
                   //Add more tabs as needed
                 ],
               ),

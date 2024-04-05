@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meta_sage_web/constant/const_color.dart';
 import 'package:meta_sage_web/ui/widgets/app_lists.dart';
+import 'package:meta_sage_web/ui/widgets/hover_items.dart';
 
 class AppsList extends StatefulWidget {
   const AppsList({super.key});
@@ -42,16 +43,22 @@ class _AppsListState extends State<AppsList> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: financeList
-                            .map((item) => Row(
-                                  children: [
-                                    Text(item.title.toString()),
-                                    const SizedBox(
-                                        height:
-                                            30), // Adjust the width as needed
-                                  ],
-                                ))
+                            .map((item) => HoverTextItem(title: item.title))
                             .toList(),
                       ),
+                      // Column(
+                      //   crossAxisAlignment: CrossAxisAlignment.start,
+                      //   children: financeList
+                      //       .map((item) => Row(
+                      //             children: [
+                      //               Text(item.title.toString()),
+                      //               const SizedBox(
+                      //                   height:
+                      //                       30), // Adjust the width as needed
+                      //             ],
+                      //           ))
+                      //       .toList(),
+                      // ),
                     ],
                   ),
                   Column(
@@ -73,14 +80,7 @@ class _AppsListState extends State<AppsList> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: salesList
-                            .map((item) => Row(
-                                  children: [
-                                    Text(item.title.toString()),
-                                    const SizedBox(
-                                        height:
-                                            30), // Adjust the width as needed
-                                  ],
-                                ))
+                            .map((item) => HoverTextItem(title: item.title))
                             .toList(),
                       ),
                     ],
@@ -101,14 +101,7 @@ class _AppsListState extends State<AppsList> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: webList
-                            .map((item) => Row(
-                                  children: [
-                                    Text(item.title.toString()),
-                                    const SizedBox(
-                                        height:
-                                            30), // Adjust the width as needed
-                                  ],
-                                ))
+                            .map((item) => HoverTextItem(title: item.title))
                             .toList(),
                       ),
                     ],
@@ -129,14 +122,7 @@ class _AppsListState extends State<AppsList> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: inventoryList
-                            .map((item) => Row(
-                                  children: [
-                                    Text(item.title.toString()),
-                                    const SizedBox(
-                                        height:
-                                            30), // Adjust the width as needed
-                                  ],
-                                ))
+                            .map((item) => HoverTextItem(title: item.title))
                             .toList(),
                       ),
                     ],
@@ -163,13 +149,7 @@ class _AppsListState extends State<AppsList> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: humanResourcesList
-                          .map((item) => Row(
-                                children: [
-                                  Text(item.title.toString()),
-                                  const SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
+                          .map((item) => HoverTextItem(title: item.title))
                           .toList(),
                     ),
                   ],
@@ -190,13 +170,7 @@ class _AppsListState extends State<AppsList> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: marketingList
-                          .map((item) => Row(
-                                children: [
-                                  Text(item.title.toString()),
-                                  const SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
+                          .map((item) => HoverTextItem(title: item.title))
                           .toList(),
                     ),
                   ],
@@ -217,13 +191,7 @@ class _AppsListState extends State<AppsList> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: servicesList
-                          .map((item) => Row(
-                                children: [
-                                  Text(item.title.toString()),
-                                  const SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
+                          .map((item) => HoverTextItem(title: item.title))
                           .toList(),
                     ),
                   ],
@@ -244,13 +212,7 @@ class _AppsListState extends State<AppsList> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: productivityList
-                          .map((item) => Row(
-                                children: [
-                                  Text(item.title.toString()),
-                                  const SizedBox(
-                                      height: 30), // Adjust the width as needed
-                                ],
-                              ))
+                          .map((item) => HoverTextItem(title: item.title))
                           .toList(),
                     ),
                   ],

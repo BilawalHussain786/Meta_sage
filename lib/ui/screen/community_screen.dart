@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meta_sage_web/constant/const_color.dart';
 import 'package:meta_sage_web/ui/widgets/comminity_List.dart';
+import 'package:meta_sage_web/ui/widgets/hover_items.dart';
 
 class CommunityList extends StatefulWidget {
   const CommunityList({super.key});
@@ -10,6 +11,7 @@ class CommunityList extends StatefulWidget {
 }
 
 class _CommunityListState extends State<CommunityList> {
+  bool ishover = false;
   @override
   Widget build(BuildContext context) {
     dynamic size = MediaQuery.of(context).size;
@@ -44,16 +46,10 @@ class _CommunityListState extends State<CommunityList> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: learnList
-                                .map((item) => Row(
-                                      children: [
-                                        Text(item.title.toString()),
-                                        const SizedBox(
-                                            height:
-                                                30), // Adjust the width as needed
-                                      ],
-                                    ))
+                                .map((item) => HoverTextItem(title: item.title))
                                 .toList(),
                           ),
+
                           const SizedBox(
                             height: 40,
                           ),
@@ -67,19 +63,26 @@ class _CommunityListState extends State<CommunityList> {
                           const SizedBox(
                             height: 10,
                           ),
+
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: empowerList
-                                .map((item) => Row(
-                                      children: [
-                                        Text(item.title.toString()),
-                                        const SizedBox(
-                                            height:
-                                                30), // Adjust the width as needed
-                                      ],
-                                    ))
+                                .map((item) => HoverTextItem(title: item.title))
                                 .toList(),
                           ),
+                          // Column(
+                          //   crossAxisAlignment: CrossAxisAlignment.start,
+                          //   children: empowerList
+                          //       .map((item) => Row(
+                          //             children: [
+                          //               Text(item.title.toString()),
+                          //               const SizedBox(
+                          //                   height:
+                          //                       30), // Adjust the width as needed
+                          //             ],
+                          //           ))
+                          //       .toList(),
+                          // ),
                         ],
                       ),
                       Column(
@@ -101,14 +104,7 @@ class _CommunityListState extends State<CommunityList> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: getSoftwareList
-                                .map((item) => Row(
-                                      children: [
-                                        Text(item.title.toString()),
-                                        const SizedBox(
-                                            height:
-                                                30), // Adjust the width as needed
-                                      ],
-                                    ))
+                                .map((item) => HoverTextItem(title: item.title))
                                 .toList(),
                           ),
                         ],
@@ -129,14 +125,7 @@ class _CommunityListState extends State<CommunityList> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: collaborateList
-                                .map((item) => Row(
-                                      children: [
-                                        Text(item.title.toString()),
-                                        const SizedBox(
-                                            height:
-                                                30), // Adjust the width as needed
-                                      ],
-                                    ))
+                                .map((item) => HoverTextItem(title: item.title))
                                 .toList(),
                           ),
                         ],
@@ -157,14 +146,7 @@ class _CommunityListState extends State<CommunityList> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: getServicesList
-                                .map((item) => Row(
-                                      children: [
-                                        Text(item.title.toString()),
-                                        const SizedBox(
-                                            height:
-                                                30), // Adjust the width as needed
-                                      ],
-                                    ))
+                                .map((item) => HoverTextItem(title: item.title))
                                 .toList(),
                           ),
                         ],

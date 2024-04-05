@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ConstImages {
   static const String fb = 'assets/images/fb.png';
   static const String inventory = 'assets/images/inventory.webp';
@@ -38,4 +40,6 @@ class ConstImages {
   static const String crm = 'assets/images/CRM.png';
   static const String attandence = 'assets/images/Attandence.png';
   static const String humanResource = 'assets/images/HumanResources.png';
+  static const String odolution = 'assets/images/Odolution.gif';
+  static const String becomeP = 'assets/images/become_patner1.PNG';
 }

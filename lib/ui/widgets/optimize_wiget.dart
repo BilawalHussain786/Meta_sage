@@ -15,17 +15,28 @@ class _OptimizeProductsState extends State<OptimizeProducts> {
     dynamic size = MediaQuery.of(context).size;
     return Column(
       children: [
-        Text(
+        const Text(
           "Optimized for productivity",
           style: TextStyle(
               fontSize: 80, fontWeight: FontWeight.bold, fontFamily: "Caveat"),
         ),
-        SizedBox(height: 200),
+        const SizedBox(height: 200),
         Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2), // shadow color
+                spreadRadius: 5, // how spread the shadow is
+                blurRadius: 7, // how blurred the shadow is
+                offset: const Offset(3, 4), // changes position of shadow
+              ),
+            ],
+            color: ConstColor.white,
+          ),
           //width: size.width * 0.7,
 
           // height: size.height * 0.9,
-          color: ConstColor.white,
+
           child: Stack(
             clipBehavior: Clip.none,
             children: [
@@ -44,6 +55,15 @@ class _OptimizeProductsState extends State<OptimizeProducts> {
                 left: -180,
                 child: Container(
                   decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2), // shadow color
+                          spreadRadius: 5, // how spread the shadow is
+                          blurRadius: 7, // how blurred the shadow is
+                          offset:
+                              const Offset(3, 4), // changes position of shadow
+                        ),
+                      ],
                       color: ConstColor.white,
                       borderRadius: BorderRadius.circular(8)),
                   child: Padding(
@@ -61,6 +81,15 @@ class _OptimizeProductsState extends State<OptimizeProducts> {
                 left: -180,
                 child: Container(
                   decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2), // shadow color
+                          spreadRadius: 5, // how spread the shadow is
+                          blurRadius: 7, // how blurred the shadow is
+                          offset:
+                              const Offset(3, 4), // changes position of shadow
+                        ),
+                      ],
                       color: ConstColor.white,
                       borderRadius: BorderRadius.circular(8)),
                   child: Padding(
@@ -78,6 +107,15 @@ class _OptimizeProductsState extends State<OptimizeProducts> {
                 right: -150,
                 child: Container(
                   decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2), // shadow color
+                          spreadRadius: 5, // how spread the shadow is
+                          blurRadius: 7, // how blurred the shadow is
+                          offset:
+                              const Offset(3, 4), // changes position of shadow
+                        ),
+                      ],
                       color: ConstColor.white,
                       borderRadius: BorderRadius.circular(8)),
                   child: Padding(
