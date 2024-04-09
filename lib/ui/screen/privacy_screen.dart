@@ -45,8 +45,8 @@ class PrivacyScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 15),
                   const Text(
-                    "When you use our app/Website, you trust us with your information. We are \ncommitted to keeping that trust. That starts with helping you understand our privacy\n practices.",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    "When you use our app/Website, you trust us with your information. We are committed to keeping that trust. That starts with helping you understand our privacy practices.",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   const Text(
@@ -65,7 +65,7 @@ class PrivacyScreen extends StatelessWidget {
                           text:
                               'This policy applies to any users of the services of METASAGE Website / Apps or its affiliates anywhere in the world, and to anyone else who contacts METASAGE Website / App or otherwise submits information to METASAGE Website / App, unless noted below.  ',
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w300),
+                              fontSize: 18, fontWeight: FontWeight.w500),
                         ),
                         TextSpan(
                           text:
@@ -101,7 +101,7 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   const Text(
                     "META SAGE Website / App collects the following categories of information:",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -114,7 +114,7 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                     "This includes information submitted when you:",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -159,7 +159,7 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                     "This includes:",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -172,7 +172,7 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                     "Depending on the METASAGE App services that you use, and your app settings or device permissions, METASAGE App may collect your precise or approximate location information as determined through data such as GPS, IP address and WiFi.",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -199,7 +199,7 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                     "We collect transaction details if required in META SAGE App’s or otherwise there is no transaction information required.",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -211,7 +211,7 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                     "We collect information about how you interact with our services, preferences expressed, and settings chosen. In some cases we do this through the use of cookies, pixel tags, and similar technologies that create and maintain unique identifiers.",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -222,7 +222,7 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                     "We may collect information about the devices you use to access our services, including the hardware models, operating systems and versions, software, file names and versions, preferred languages, unique device identifiers, advertising identifiers, serial numbers, device motion information, and mobile network information.",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -233,7 +233,7 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                     "In some METASAGE App’s we enable users to call or text each other through the METASAGE App apps. For example, we enable user to chat with other user or call through its dialer if call option is required. META SAGE App may also use this information for customer support services (including to resolve disputes between users), for safety and security purposes, and for analytics.",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -269,7 +269,7 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                     "META SAGE App may combine the information collected from these sources with other information in its possession.",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   const Text(
@@ -279,12 +279,12 @@ class PrivacyScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   const Text(
                     "We may occasionally update this policy. If we make significant changes, we will notify you of the changes through the META SAGE App or through others means, such as email. To the extent permitted under applicable law, by using our services after such notice, you consent to our updates to this policy.",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   const Text(
                     "We encourage you to periodically review this policy for the latest information on our privacy practices. We will also make prior versions of our privacy policies available for review.",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),

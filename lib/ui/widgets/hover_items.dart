@@ -77,7 +77,7 @@ class _HoverTextfooterState extends State<HoverTextfooter> {
             ),
           ),
           const SizedBox(
-            height: 30,
+            height: 25,
           ),
         ],
       ),

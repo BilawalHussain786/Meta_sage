@@ -140,6 +140,7 @@
 //     );
 //   }
 // }
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta_sage_web/constant/const_color.dart';
@@ -147,6 +148,7 @@ import 'package:meta_sage_web/constant/const_images.dart';
 import 'package:meta_sage_web/ui/screen/app_screen.dart';
 import 'package:meta_sage_web/ui/screen/community_screen.dart';
 import 'package:meta_sage_web/ui/screen/drawer_screen.dart';
+import 'package:meta_sage_web/ui/screen/find_a_patner.dart';
 import 'package:meta_sage_web/ui/screen/home_screen.dart';
 
 class TabBarExample extends StatefulWidget {
@@ -224,7 +226,7 @@ class _TabBarExampleState extends State<TabBarExample> {
                     children: [
                       Image.asset(
                         ConstImages.metaSage,
-                        height: 90,
+                        height: 80,
                       ),
                     ],
                   ),

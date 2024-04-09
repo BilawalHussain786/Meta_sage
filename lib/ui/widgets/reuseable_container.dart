@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:meta_sage_web/constant/const_color.dart';
 
 class ReuseableContainer extends StatefulWidget {
-  ReuseableContainer({this.url, super.key});
+  ReuseableContainer({this.url, this.height, this.width, super.key});
   String? url;
-
+  dynamic height;
+  dynamic width;
   @override
   State<ReuseableContainer> createState() => _ReuseableContainerState();
 }
@@ -27,8 +28,8 @@ class _ReuseableContainerState extends State<ReuseableContainer> {
         child: Transform.translate(
           offset: containerMove ? const Offset(0, -5) : Offset.zero,
           child: Container(
-            width: 100,
-            height: 100,
+            width: widget.width,
+            height: widget.height,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
